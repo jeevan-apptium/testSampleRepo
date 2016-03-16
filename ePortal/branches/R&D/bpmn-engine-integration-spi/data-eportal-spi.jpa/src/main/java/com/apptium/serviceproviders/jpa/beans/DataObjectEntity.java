@@ -1,16 +1,11 @@
 package com.apptium.serviceproviders.jpa.beans;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Lob;
-import javax.persistence.Table;
-
 import org.springframework.util.SerializationUtils;
 
-@Entity @Table(name="CATIFY_DATA_OBJECT_SPI")
+
 public class DataObjectEntity {
 	
-	@Id
+	
 	private String id;
 	private String uniqueProcessId;
 	private String objectId;
@@ -57,7 +52,7 @@ public class DataObjectEntity {
 		this.instanceId = instanceId;
 	}
 	
-	@Lob
+	
 	public byte[] getDataObject() {
 		return dataObject;
 	}

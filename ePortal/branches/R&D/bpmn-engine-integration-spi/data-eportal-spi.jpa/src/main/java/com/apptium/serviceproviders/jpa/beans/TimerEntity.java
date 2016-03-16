@@ -1,11 +1,6 @@
 package com.apptium.serviceproviders.jpa.beans;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-import com.catify.processengine.core.data.dataobjects.TimerBean;
+import com.apptium.processengine.core.data.dataobjects.TimerBean;
 
 /**
  * The Class TimerEntity.
@@ -14,13 +9,12 @@ import com.catify.processengine.core.data.dataobjects.TimerBean;
  * @author christopher köster
  * 
  */
-@Entity @Table(name="CATIFY_TIMER_SPI")
 public class TimerEntity {
 
-	@Id @GeneratedValue
-	private long id;
 	
-	//@Index(name = "TIME_TO_FIRE")
+	private String id;
+	
+	
 	private long timeToFire;
 	
 	private String actorRef;
@@ -45,10 +39,10 @@ public class TimerEntity {
 		this.processInstanceId = processInstanceId;
 	}
 
-	public long getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public long getTimeToFire() {
