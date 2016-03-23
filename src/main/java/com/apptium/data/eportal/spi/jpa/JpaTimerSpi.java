@@ -104,7 +104,7 @@ public class JpaTimerSpi extends TimerSPI {
 
 	
 	@Override
-	public List<TimerBean> loadDueTimers(String actorRef) {
+	public List<TimerBean> loadDueTimers() {
 		List<TimerBean> result = new ArrayList<TimerBean>(); 
 		List<TimerEntity> timerEntities = new ArrayList<TimerEntity>(); 
 		List<String> expiredSked = new ArrayList<String>(); 
@@ -112,13 +112,13 @@ public class JpaTimerSpi extends TimerSPI {
 		
 		try{
 			  for(Entry<String, TimerEntity> aRec : bpmnSked.entrySet()){			  
-				  if(aRec.getValue().getActorRef().equalsIgnoreCase(actorRef)){
+				  //if(aRec.getValue().getActorRef().equalsIgnoreCase(actorRef)){
 					  if(aRec.getValue().getTimeToFire() <= currentTimeStamp){
 						  timerEntities.add(aRec.getValue()); 	
 						  expiredSked.add(aRec.getKey()); 
 							LOG.info(aRec.getValue().getProcessInstanceId()+" >>  "+ aRec.getValue().getTimeToFire()+" <= "+ currentTimeStamp);
 					  }  
-				  }
+				  //}
 				
 			  }	  
 			
@@ -165,7 +165,13 @@ public class JpaTimerSpi extends TimerSPI {
 	private List<TimerBean> createTimerBeans(List<TimerEntity> timerEntities) {
 		List<TimerBean> timerBeans = new ArrayList<TimerBean>();	
 		for (TimerEntity timerEntity : timerEntities) {
-			timerBeans.add(new TimerBean(timerEntity.getTimeToFire(), timerEntity.getActorRef(), timerEntity.getProcessInstanceId()));
+			timerBeans.add(new TimerBean(timerEntity.getTimeToFire(), timerEntity.getActorRef(), 
+						timerEntity.getProcessInstanceId(),
+						timerEntity.getRepatBounded(),
+						timerEntity.getModelName(),
+						timerEntity.getTimerType(),
+						timerEntity.getIsoDate(),
+						timerEntity.getScheduledInstance()));
 		}
 		return timerBeans;
 	}
