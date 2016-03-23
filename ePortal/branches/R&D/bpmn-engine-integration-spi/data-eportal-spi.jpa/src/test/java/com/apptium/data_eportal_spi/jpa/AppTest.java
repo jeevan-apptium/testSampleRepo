@@ -71,7 +71,7 @@ public class AppTest
 		timer.setProcessInstanceId("processInstance");
 		timer.setTimeToFire(calculateTimeToFireForDate(isoDate));
 		sp.saveTimer(timer);
-		List<TimerBean> myTimer = sp.loadDueTimers("actorRef"); 
+		List<TimerBean> myTimer = sp.loadDueTimers(); 
 		assertEquals(myTimer.size(), 1); 
 		sp.deleteTimer("actorRef", "processInstance");
 		
