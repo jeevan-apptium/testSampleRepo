@@ -25,6 +25,7 @@ public class TimerEntity {
 	private String timerType;
 	private String isoDate;
 	private Long scheduledInstance; 
+	private String timerSource; 
 
 	public TimerEntity() {
 		
@@ -38,6 +39,7 @@ public class TimerEntity {
 		this.setRepatBounded(timer.getRepeatBounded());  
 		this.setModelName(timer.getModelName()); 
 		this.setScheduledInstance(timer.getScheduledInstance());
+		this.setTimerSource(timer.getTimerSource());
 		
 	}
 	
@@ -117,6 +119,14 @@ public class TimerEntity {
 
 	public void setScheduledInstance(Long scheduledInstance) {
 		this.scheduledInstance = scheduledInstance;
+	}
+
+	public String getTimerSource() {
+		return timerSource;
+	}
+
+	public void setTimerSource(String timerSource) {
+		this.timerSource = timerSource;
 	}
 	
 	
