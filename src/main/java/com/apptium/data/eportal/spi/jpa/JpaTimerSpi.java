@@ -14,21 +14,13 @@ import java.util.Map.Entry;
 import java.util.UUID;
 import java.util.logging.Logger;
 
-import org.apache.bcel.generic.F2D;
-import org.apache.commons.lang.math.RandomUtils;
-
-import scala.Function1;
-
 import com.apptium.processengine.core.data.dataobjects.TimerBean;
 import com.apptium.processengine.core.data.dataobjects.TimerSPI;
 import com.apptium.serviceproviders.jpa.beans.TimerEntity;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
 
 /**
  * JPA implementation of the {@link TimerSPI}.
@@ -171,7 +163,8 @@ public class JpaTimerSpi extends TimerSPI {
 						timerEntity.getModelName(),
 						timerEntity.getTimerType(),
 						timerEntity.getIsoDate(),
-						timerEntity.getScheduledInstance()));
+						timerEntity.getScheduledInstance(),
+						timerEntity.getTimerSource() ));
 		}
 		return timerBeans;
 	}
